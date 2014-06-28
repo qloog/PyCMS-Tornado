@@ -1,0 +1,137 @@
+[
+    {
+        "name": "系统设置",
+        "son": [
+            {
+                "text": "系统设置",
+                "id": "9",
+                "url": "/admin/setting/site"
+            }
+        ]
+    },
+    {
+        "name": "管理员设置",
+        "son": [
+            {
+                "text": "管理员管理",
+                "id": "9",
+                "url": "/admin/user/member_list"
+            },
+            {
+                "text": "角色管理",
+                "id": "11",
+                "url": "/admin/user/role_list"
+            }
+        ]
+    },
+    {
+        "name": "新闻管理",
+        "son": [
+            {
+                "text": "新闻管理",
+                "id": "34",
+                "url": "/admin/news/news_list"
+            },
+            {
+                "text": "分类管理",
+                "id": "34",
+                "url": "/admin/news/news_category_list"
+            }
+        ]
+    },
+    {
+        "name": "图片管理",
+        "son": [
+            {
+                "text": "图片管理",
+                "id": "34",
+                "url": "/admin/image"
+            },
+            {
+                "text": "分类管理",
+                "id": "34",
+                "url": "/admin/image_category"
+            },
+            {
+                "text": "评论管理",
+                "id": "34",
+                "url": "/admin/image_comment"
+            }
+        ]
+    },
+    {
+        "name": "用户管理",
+        "son": [
+            {
+                "text": "用户管理",
+                "id": "14",
+                "url": "/admin/user"
+            },
+            {
+                "text": "黑名单",
+                "id": "14",
+                "url": "/admin/user_black"
+            }
+        ]
+    },
+    {
+        "name": "关于我们",
+        "son": [
+            {
+                "text": "关于我们",
+                "id": "9",
+                "url": "/admin/about_us"
+            },
+            {
+                "text": "联系我们",
+                "id": "9",
+                "url": "/admin/contact_us"
+            },
+            {
+                "text": "招贤纳士",
+                "id": "9",
+                "url": "/admin/join_us"
+            },
+            {
+                "text": "公司新闻",
+                "id": "9",
+                "url": "/admin/official_news"
+            }
+        ]
+    },
+    {
+        "name": "友情链接",
+        "son": [
+            {
+                "text": "友情管理",
+                "id": "9",
+                "url": "/admin/friend_link"
+            }
+        ]
+    },
+    {
+        "name": "后台管理",
+        "son": [
+            {
+                "text": "操作日志",
+                "id": "14",
+                "url": "/admin/op_log"
+            }
+        ]
+    },
+    {
+        "name": "我的面板",
+        "son": [
+            {
+                "text": "修改个人信息",
+                "id": "6",
+                "url": "/admin/user/edit_info"
+            },
+            {
+                "text": "修改密码",
+                "id": "6",
+                "url": "/admin/user/edit_password"
+            }
+        ]
+    }
+]

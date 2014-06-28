@@ -1,0 +1,27 @@
+<script type="text/javascript">
+$(function(){
+	$.formValidator.initConfig({formID:"admin_newscategorylist_edit_dialog_form",onError:function(msg){/*$.messager.alert('错误提示', msg, 'error');*/},onSuccess:adminnewscategorylistEditDialogFormSubmit,submitAfterAjaxPrompt:'有数据正在异步验证，请稍等...',inIframe:true});
+	$("#admin_newscategorylist_edit_dialog_form_name").formValidator({onShow:"请输入名称",onFocus:"分类名称不能为空"}).inputValidator({min:1,max:999,onError:"分类名称不能为空"});
+})
+function adminnewscategorylistEditDialogFormSubmit(){
+	$.post('/admin/news/news_category_edit?id={{ info.category_id }}', $("#admin_newscategorylist_edit_dialog_form").serialize(), function(res){
+		if(res.code == 0 ){
+			$.messager.alert('提示信息', res.msg, 'info');
+			$('#admin_newscategorylist_edit_dialog').dialog('close');
+			adminnewscategorylistRefresh();
+		}else{
+            $.messager.alert('提示信息', res.msg, 'error');
+		}
+	}, 'json');
+}
+</script>
+<form id="admin_newscategorylist_edit_dialog_form">
+{% raw xsrf_form_html() %}
+<table cellspacing="6" width="100%">
+	<tr>
+		<td width="80">分类名称：</td>
+		<td><input id="admin_newscategorylist_edit_dialog_form_name" type="text" name="category_name" value="{{ info.category_name }}" style="width:200px;height:22px" /></td>
+		<td><div id="admin_newscategorylist_edit_dialog_form_nameTip"></div></td>
+	</tr>
+</table>
+</form>

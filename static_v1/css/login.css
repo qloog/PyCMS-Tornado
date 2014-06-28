@@ -1,0 +1,135 @@
+
+html {
+background-image: url('/static/img/bg-pattern-1.png');
+}
+
+#maincontent {
+margin-left: auto;
+margin-right: auto;
+width: 400px;
+background-color: #ffffff;
+padding: 30px 0 0 0;
+border: 1px solid #dedede;
+line-height: 10px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+#panelLogin,
+#panelSignup {
+padding-top: 5px;
+padding: 0 40px 0 40px;
+}
+
+#maincontent h1 {
+margin-bottom: 25px;
+margin-top: 0;
+padding: 0 40px 0 40px;
+text-align: left;
+font-size: 24px;
+font-weight: normal;
+}
+
+#maincontent h2 {
+font-size: 14px;
+font-weight: normal;
+padding-bottom: 15px;
+color: #777;
+margin-bottom: 5px;
+}
+
+#maincontent label {
+font-size: 13px;
+line-height: 13px;
+padding-bottom: 0px;
+color: #333333;
+display: block;
+}
+
+#maincontent input[type=text],
+#maincontent input[type=password] {
+margin: 0px;
+padding: 5px;
+font-size: 20px;
+width: 285px;
+margin-bottom: 10px;
+}
+
+#maincontent .wrapSignupForm {
+padding: 30px 0px 30px 40px;
+border-top: 1px solid #ededed;
+}
+
+#maincontent .wrapSignupForm h2 {
+font-weight: bold;
+font-size: 16px;
+color: black;
+}
+
+#maincontent input[type=text] {
+margin-bottom: 5px;
+}
+
+#maincontent input[type=password] {
+margin-bottom: 15px;
+}
+
+#maincontent input[type=submit] {
+font-size: 14px;
+}
+
+#maincontent .error {
+border: 1px solid #ddd;
+background-color: #f8f8f8;
+padding: 10px 15px 10px 15px;
+font-size: 14px;
+line-height: 18px;
+color: #333;
+margin-bottom: 20px;
+}
+
+#maincontent .social {
+border-top: 1px solid #ededed;
+padding-top: 30px;
+margin-top: 30px;
+padding: 30px 0px 30px 40px;
+}
+
+#maincontent .social .actionButton {
+float: left;
+margin-right: 15px;
+line-height: 18px;
+padding: 7px 10px 6px 10px;
+}
+
+#maincontent .social .actionButton img {
+vertical-align: middle;
+margin-bottom: 2px;
+margin-right: 7px;
+display: inline;
+}
+
+#maincontent .resetPassword {
+border-top: 1px solid #dedede;
+font-size: 11px;
+color: #999999;
+background-color: #f8f8f8;
+margin-top: 5px;
+padding: 15px 30px 15px 40px;
+-moz-border-radius-bottomright: 3px;
+-moz-border-radius-bottomleft: 3px;
+-webkit-border-bottom-left-radius: 3px;
+-webkit-border-bottom-right-radius: 3px;
+border-bottom-left-radius: 3px;
+border-bottom-right-radius: 3px;
+}
+
+#maincontent .resetPassword a {
+color: #999999;
+}
+
+#maincontent .resetPassword a:hover {
+color: #000000;
+text-decoration: underline;
+}

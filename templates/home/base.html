@@ -1,0 +1,149 @@
+<!doctype html>
+<!--[if lt IE 7 ]>
+<html class="no-js ie6">
+<![endif]-->
+<!--[if IE 7 ]>
+<html class="no-js ie7">
+<![endif]-->
+<!--[if IE 8 ]>
+<html class="no-js ie8">
+<![endif]-->
+<!--[if IE 9 ]>
+<html class="no-js ie9">
+<![endif]-->
+<!--[if (gt IE 9)|!(IE)]>
+<!-->
+<html class="no-js">
+<!--<![endif]-->
+<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# wookmark: http://ogp.me/ns/fb/wookmark#">
+	<meta charset="utf-8">
+	<title>
+		Save images with Wuminghui
+	</title>
+	<meta name="description" content="Save your favorite images and videos from the web."
+	/>
+	<meta name="keywords" content="image bookmarking" />
+	<meta name="robots" content="index,follow" />
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no"
+	/>
+	<meta name="google" content="notranslate" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<link rel="shortcut icon" href="/favicon.ico" />
+	<link rel="icon" type="image/png" href="/favicon.png" />
+	<link rel="apple-touch-icon-precomposed" href="{{ static_url("img/apple-touch-icon-57x57-precomposed.png") }}" />
+	<link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ static_url("img/apple-touch-icon-72x72-precomposed.png") }}" />
+	<link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ static_url("img/apple-touch-icon-114x114-precomposed.png") }}" />
+	<link href="{{ static_url("img/apple-touch-startup-image-320x460.png") }}" media="(device-width: 320px)"
+	rel="apple-touch-startup-image" />
+	<link href="{{ static_url("img/apple-touch-startup-image-640x920.png") }}" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)"
+	rel="apple-touch-startup-image" />
+	<link href="{{ static_url("img/apple-touch-startup-image-768x1004.png") }}" media="(device-width: 768px) and (orientation: portrait)" rel="apple-touch-startup-image" />
+	<link href="{{ static_url("img/apple-touch-startup-image-748x1024.png") }}" media="(device-width: 768px) and (orientation: landscape)" rel="apple-touch-startup-image" />
+	<link href="{{ static_url("img/apple-touch-startup-image-1536x2008.png") }}" media="(device-width: 1536px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image" />
+	<link href="{{ static_url("img/apple-touch-startup-image-1496x2048.png") }}" media="(device-width: 1536px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2)"
+	rel="apple-touch-startup-image" />
+	<meta name="apple-itunes-app" content="app-id=667503987, affiliate-data=11lqLo">
+	<link rel="stylesheet" href="{{ static_url("css/style.css") }}" type="text/css" media="all" />
+	{% block css %} {% end %} 
+	<script src="{{ static_url("js/modernizr-2.6.1.min.js") }}"></script>
+	<link rel="alternate" type="application/rss+xml" title="Popular on Wookmark" href="http://www.wookmark.com/api/rss/popular" />
+	<meta property="fb:app_id" content="177877262290485" />
+</head>
+<body>
+	{% block leftmenu %}
+	<div id="kaori" class="nodrag">
+		<div class="search">
+			<input type="text" name="term" autocomplete="off" />
+		</div>
+		{% if current_user %}
+		<div class="profileImage">
+			<a href="/profile/{{ current_user.username }}">
+				<img src="http://www.wookmark.com/images/profile/60/abcdefg.jpg" width="30" height="30" />
+			</a>
+		</div>
+		{% end %}
+		<ol>
+			{% if current_user %}
+			<li class="profile"> <a href="/profile/{{ current_user.username }}">{{ current_user.realname }}</a></li>
+			<li class="following" data-type="following" data-id="27378"> <a href="/" title="From your following">Following</a> </li>
+			<li class="activity"> <a href="/profile/{{ current_user.username }}/activity" title="Activity">Activity</a></li>
+			{% end %}
+			<li class="popular active" data-type="popular">
+				<a href="/" title="Popular on W">
+					Popular
+				</a>
+			</li>
+			<li class="recent" data-type="recent">
+				<a href="javascript:;" title="New on Wookmark">
+					New
+				</a>
+			</li>
+			<li class="categories">
+				<a href="javascript:;" title="Categories">
+					Categories
+				</a>
+			</li>
+			<li class="surprise">
+				<a href="javascript:;" title="Surprise">
+					Surprise
+				</a>
+			</li>
+			<li class="videos">
+				<a href="javascript:;">
+					Videos
+				</a>
+			</li>
+			<li class="colors">
+				<a href="javascript:;">
+					Colors
+				</a>
+			</li>
+		</ol>
+		{% if not current_user %}
+		<a href="/login" class="login">
+			登陆
+		</a>
+		{% end %}
+		<p class="bottom">
+			<a href="/about/help">
+				帮助
+			</a>
+			{% if current_user %}
+			<a href="/settings/profile">
+				设置
+			</a>
+			<a href="/logout">
+				退出
+			</a>
+			{% end %}
+		</p>
+	</div>
+	{% end %}
+	{% block navtop %}
+	<div id="luka">
+		<div class="hamburger">
+		</div>
+		<p>
+			{% block navtop_title %}{% end %}
+		</p>
+	</div>
+	{% end %}
+	{% block container %}
+	
+	{% end %}
+	<div id="loader">
+	</div>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script>
+		window.jQuery || document.write('<script src="{{ static_url("js/libs/jquery-1.6.2.min.js") }}"><\/script>')
+	</script>
+	<script type="text/javascript" src="{{ static_url("js/classes/common.min.js") }}">
+	</script>
+	{% block js %} {% end %} 
+	<script type="text/javascript">
+		
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="author" content="">
+<title>后台管理系统</title>
+<script type="text/javascript" src="{{ static_url("js/jquery.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("js/jquery.cookie.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("js/jquery.json.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("js/easyui/jquery.easyui.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("js/easyui/locale/easyui-lang-zh_CN.js") }}"></script>
+
+{% block easyui_theme %}
+<!-- easyui theme -->
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/icons.css") }}" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("js/easyui/themes/default/easyui.css") }}" title="default" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("js/easyui/themes/gray/easyui.css") }}" title="gray" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("js/easyui/themes/bootstrap/easyui.css") }}" title="bootstrap" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("js/easyui/themes/metro/easyui.css") }}" title="metro" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/admin/default.css") }}" title="default" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/admin/gray.css") }}" title="gray" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/admin/bootstrap.css") }}" title="bootstrap" />
+<link rel="stylesheet" type="text/css" href="{{ static_url("css/admin/metro.css") }}" title="metro" />
+<script type="text/javascript">
+var theme = $.cookie('theme') || 'bootstrap';   //全局变量
+$(document).ready(function(){
+    $('link[rel*=style][title]').each(function(i){
+        this.disabled = true;
+        if (this.getAttribute('title') == theme) this.disabled = false;
+    });
+});
+</script>
+{% end %}
+
+{% block formValidator %}
+<!-- formValidator -->
+<script type="text/javascript" src="{{ static_url("js/formvalidator/formValidator.min.js") }}"></script>
+<script type="text/javascript" src="{{ static_url("js/formvalidator/formValidatorRegex.js") }}"></script>
+<script type="text/javascript">initConfig_setting.theme = 'App';</script>
+{% end %}
+
+{% block custom_style %}{% end %}
+</head>
+
+<body class="easyui-layout">
+{% block content %}{% end %}
+</body>
+</html>

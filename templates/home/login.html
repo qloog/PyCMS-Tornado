@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ static_url("css/login.css?v=10") }}" type="text/css" media="all" />
+{% end %}
+
+{% block container %}
+						<div id="page">
+							<div class="headerSpacer">
+							</div>
+							<div id="maincontent" class="center">
+								<h1>
+									Welcome back
+								</h1>
+								<div id="panelLogin" class="panel">
+									{% if error %}
+									<div class="error"> <p>{{ handler.error_message[str(error)]}}</p> </div>
+									{% end %}
+								</div>
+								<div class="social clearfix">
+									<div class="fbLogin">
+										<a href="/facebook/login" class="actionButton">
+											<img src="{{ static_url("img/icons/facebook-18.png") }}" width="18" height="18" alt="" />
+											Log in via Facebook
+										</a>
+									</div>
+									<div class="twitterLogin">
+										<a href="/twitter/login" class="actionButton">
+											<img src="{{ static_url("img/icons/twitter-18.png") }}" width="24" height="18" alt="" />
+											Log in via Twitter
+										</a>
+									</div>
+								</div>
+								<div class="wrapSignupForm">
+									<h2>
+										Or log in manually
+									</h2>
+									<form action="/login" method="post" accept-charset="utf-8" id="form_login">
+										{% raw xsrf_form_html() %}
+										<label for="email">
+											Email
+										</label>
+										<br />
+										<input type="text" name="email" id="email" value="" />
+										<br />
+										<label for="pass">
+											Password
+										</label>
+										<br />
+										<input type="password" name="password" id="password" value="" />
+										<br />
+										<div id="gcaptcha"></div>  <!--验证码图片-->
+										<br />
+										<input type="submit" name="send" id="send" value="Log In" />
+									</form>
+								</div>
+								<div class="resetPassword">
+									<p>
+										<a href="/user/resetpassword/start">
+											Forgot your password?
+										</a>
+									</p>
+								</div>
+								<div class="clear">
+								</div>
+							</div>
+							<div class="clear">
+							</div>
+						</div>
+{% end %}
+
+{% block js %}
+<script type="text/javascript" src="http://www.google.com/recaptcha/api/js/recaptcha_ajax.js"/></script>
+<script type="text/javascript" src="{{ static_url("js/login.js") }}"></script>
+<script type="text/javascript">
+	//use intro: https://developers.google.com/recaptcha/intro
+	function google_captcha(element){
+		Recaptcha.create('6Ld58vISAAAAAE4c_nUxf7GJxv8AiORrUZXF53zS', element, {   //输入公钥
+	        theme: "white",  //主题 一共四种
+	        callback: Recaptcha.focus_response_field 
+	    });
+	}
+
+	$(document).ready(function(){
+	    google_captcha('gcaptcha');
+	
+		$("#send").click(function(event){
+		    var xsrf = $("input[name='_xsrf']").val();
+		    var loginElement = encodeURI(encodeURI($("#email").val()));
+		    var passElement = encodeURI(encodeURI($("#password").val()));
+		    var response = $("#recaptcha_response_field").val();  //因为这里使用jquery的ajax，post的数据需要指定都取什么
+		    var challenge = $("#recaptcha_challenge_field").val(); 
+		    $.ajax({
+				type: "POST",
+			   	url: "/login",
+			   	data: {'login':loginElement,'passwd':passElement,'_xsrf':xsrf,'recaptcha_response_field':response,'recaptcha_challenge_field':challenge}, //数据包含这五种
+		   		success: function(data){
+		   			if (/Login Success/.exec(decodeURI(data)) == null)
+		   			{
+		   				alert(decodeURI(data));
+		   				Recaptcha.reload();   //假如有输入错误会弹窗警告，然后会重置验证码图片
+					}
+				   	else {  window.location="/home";
+				   	}
+				}
+			});    
+			$("#password").val('');
+		});
+	})
+	
+</script>
+{% end %}

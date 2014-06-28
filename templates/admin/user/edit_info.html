@@ -1,0 +1,76 @@
+<div class="easyui-panel" data-options="fit:true,title:'我的面板 > 个人信息 > 修改个人信息',border:false">
+<script type="text/javascript">
+$(function(){
+	$('#admin_public_editinfo_form_submit').click(function(){$('#admin_public_editinfo_form').submit()});
+	$.formValidator.initConfig({formID:"admin_public_editinfo_form",onSuccess:adminPublicEditinfoFormSubmit,submitAfterAjaxPrompt:'有数据正在异步验证，请稍等...',inIframe:true});
+	$("#admin_public_editinfo_form_realname").formValidator({onShow:"请输入真实姓名",onFocus:"真实姓名应该为2-20位之间"}).inputValidator({min:2,max:20,empty:{leftEmpty:false,rightEmpty:false,emptyError:"姓名两边不能有空格"},onError:"真实姓名应该为2-20位之间"});
+	$("#admin_public_editinfo_form_email").formValidator({onShow:"请输入E-mail",onFocus:"请输入E-mail"}).regexValidator({regExp:"email",dataType:"enum",onError:"E-mail格式错误"}).ajaxValidator({
+		type : "post",
+		url : "/admin/user/check_email",
+		data : {
+		    email: function(){return $("#admin_public_editinfo_form_email").val()},
+		    default: '{{ user.email }}',
+		    _xsrf: $.cookie('_xsrf')
+		},
+		datatype : "json",
+		async:'false',
+		success : function(data){
+			var json = $.parseJSON(data);
+            return json.error == 0 ? true : false;
+		},
+		onError : "该邮箱已经存在",
+		onWait : "请稍候..."
+	});
+})
+function adminPublicEditinfoFormSubmit(){
+	$.post('/admin/user/edit_info', $("#admin_public_editinfo_form").serialize(), function(res){
+		if(res.error){
+			$.messager.alert('提示信息', res.msg, 'error');
+		}else{
+			$.messager.alert('提示信息', res.msg, 'info');
+		}
+	})
+}
+</script>
+<form id="admin_public_editinfo_form">
+{% raw xsrf_form_html() %}
+<table cellspacing="10">
+	<tr>
+		<td width="90">用户名：</td>
+		<td>{{ user.username }}</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td>最后登录时间</td>
+        {% if user.last_login_time == None %}
+            <td>--</td>
+        {% else %}
+		    <td>{{ user.last_login_time }}</td>
+        {% end %}
+		<td></td>
+	</tr>
+	<tr>
+		<td>最后登录IP</td> 
+		{% if user.last_login_ip != '' %}
+            <td>{{ user.last_login_time }}</td>
+        {% else %}
+            <td>--</td>
+        {% end %}
+		<td></td>
+	</tr>
+	<tr>
+		<td>真实姓名</td>
+		<td><input id="admin_public_editinfo_form_realname" type="text" name="realname" value="{{ user.realname }}" style="width:180px;height:22px" /></td>
+		<td><div id="admin_public_editinfo_form_realnameTip"></div></td>
+	</tr>
+	<tr>
+		<td>E-mail：</td>
+		<td><input id="admin_public_editinfo_form_email" type="text" name="email" value="{{ user.email }}" style="width:180px;height:22px" /></td>
+		<td><div id="admin_public_editinfo_form_emailTip"></div></td>
+	</tr>
+	<tr>
+		<td colspan="3"><a id="admin_public_editinfo_form_submit" class="easyui-linkbutton">提交</a></td>
+	</tr>
+</table>
+</form>
+</div>

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ static_url("css/home.css") }}" type="text/css" media="all" />
+{% end %}
+
+{% block container %}
+	<div id="page">
+		<div class="headerSpacer">
+		</div>
+		{% if not current_user %}
+		<div id="siteIntro">
+			<h2>
+				<a href="/about/thisplace" class="logo">
+					无名汇
+				</a>
+				is a place for creativity.
+				<br/>
+				You should join us.
+			</h2>
+			<a href="/register" class="actionButton blueButton">
+				注册
+			</a>
+		</div>
+		{% end %}
+		<div id="images">
+			<div class="polaroid tile" id="image_403875" data-likes="5" data-saves="7"
+			data-w="500" data-h="750">
+				<div class="options">
+					<div class="save" title="Save image">
+						<a href="/register">
+							<em>
+							</em>
+							<span>
+								Save
+							</span>
+						</a>
+					</div>
+					<div class="like" title="Like image">
+						<a href="/register">
+							<em>
+							</em>
+							<span>
+								Like
+							</span>
+						</a>
+					</div>
+				</div>
+				<a href="javascript:;" class="imageLink">
+					<img src="http://images1.wookmark.com/403875_wookmark.jpg" alt="Heathered melange jersey covered shoe with tropical printed swoosh and inlay… hot | Inspiration DE"
+					width="200" height="300" />
+				</a>
+				<div class="stats">
+					<p>
+						<a href="javascript:;">
+							<em class="s">
+							</em>
+							<span class="saves">
+								7
+							</span>
+							<em class="l">
+							</em>
+							<span class="likes">
+								5
+							</span>
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="polaroid tile tall" id="image_405052" data-likes="2" data-saves="6"
+			data-w="600" data-h="1718">
+				<div class="options">
+					<div class="save" title="Save image">
+						<a href="/register">
+							<em>
+							</em>
+							<span>
+								Save
+							</span>
+						</a>
+					</div>
+					<div class="like" title="Like image">
+						<a href="/register">
+							<em>
+							</em>
+							<span>
+								Like
+							</span>
+						</a>
+					</div>
+				</div>
+				<a href="javascript:;"
+				class="imageLink">
+					<img src="http://images2.wookmark.com/405052_wookmark.jpg" alt="Nike | Colorado Blood on"
+					width="200" height="573" />
+				</a>
+				<div class="stats">
+					<p>
+						<a href="javascript:;">
+							<em class="s">
+							</em>
+							<span class="saves">
+								6
+							</span>
+							<em class="l">
+							</em>
+							<span class="likes">
+								2
+							</span>
+						</a>
+					</p>
+				</div>
+			</div>
+			<div class="clear">
+			</div>
+		</div>
+		<script type="text/javascript">
+			var pageConfig = {
+				type: 'popular'
+			};
+		</script>
+		<div class="clear">
+		</div>
+	</div>
+{% end %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ static_url("js/classes/grid.min.js") }}"></script>
+{% end %}

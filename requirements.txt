@@ -1,0 +1,5 @@
+tornado==3.2.0
+sqlalchemy==0.9
+wtforms
+python-memcached==1.53
+MySQL-python

@@ -1,0 +1,77 @@
+{% extends 'settings_base.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ static_url("css/settings/common.css") }}" type="text/css" media="all" />
+<link rel="stylesheet" href="{{ static_url("css/settings/profile.css") }}" type="text/css" media="all" />
+{% end %}
+
+{% block navtop_title %} Profile settings {% end %}
+
+{% block setting_content %}
+	<div class="intro">
+		<h1>
+			<img src="http://www.wookmark.com//images/profile/30/abcdefg.jpg" width="30"
+			height="30" alt="">
+			Your Profile
+		</h1>
+	</div>
+	<div class="wrapSettingsForm">
+		<form action="/settings/profile" method="post"
+		accept-charset="utf-8" id="formSettings" enctype="multipart/form-data">
+			<div class="section clearfix">
+				<label for="name">
+					Your Name
+				</label>
+				<input type="text" name="realname" value="{{ user.realname }}">
+			</div>
+			<div class="section clearfix">
+				<label for="slug">
+					Username
+				</label>
+				<input type="text" name="username" value="{{ user.username }}">
+				<div class="sluginfo">
+					<p class="slugdisplay">
+						Your profile: http://www.wuminghui.com/profile/
+						<span class="display">
+							{{ user.username }}
+						</span>
+					</p>
+					<p class="slugerror">
+					</p>
+				</div>
+			</div>
+			<div class="section clearfix">
+				<label for="email">
+					Email
+				</label>
+				<input type="text" name="email" value="{{ user.email }}">
+			</div>
+			<div class="section clearfix">
+				<label for="link">
+					Link
+				</label>
+				<input type="text" name="link" value="{{ user_info.gender }}">
+			</div>
+			<div class="section clearfix">
+				<label for="about_me">
+					About you
+				</label>
+				<textarea name="about_me" cols="40" rows="10">
+					{{ user_info.about_me }}
+				</textarea>
+			</div>
+			<div class="section clearfix">
+				<label for="avatar_src">
+					Avatar
+				</label>
+				<input type="file" name="avatar_src" value="" size="20">
+			</div>
+			{% raw xsrf_form_html() %}
+			<input type="submit" name="send" value="Save Changes">
+		</form>
+	</div>
+{% end %}
+
+{% block js %}
+	<script type="text/javascript" src="{{ static_url("js/settings/profile.js") }}"></script>
+{% end %}

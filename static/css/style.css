@@ -1,0 +1,58 @@
+html,body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family:sans-serif;
+}
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0px auto -60px;
+    padding: 0;
+}
+#push{
+    height:60px;
+}
+footer {
+    height: 60px;
+    background-color: white;
+    border-top: 1px solid #ddd;
+    padding: 18px 0;
+    margin: 0;
+}
+.row > [class*="col-"] {
+    margin-bottom: 30px;
+}
+.navbar-container {
+    position: relative;
+    min-height: 100px;
+}
+.navbar-container .navbar.navbar-fixed-top,
+.navbar-container .navbar.navbar-fixed-bottom {
+    position: absolute;
+    top: 50px;
+    z-index: 0;
+}
+.navbar-container .navbar.navbar-fixed-top .container,
+.navbar-container .navbar.navbar-fixed-bottom .container {
+    max-width: 90%;
+}
+.btn-group {
+    margin-bottom: 10px
+}
+.form-inline select,
+.form-inline input[type="text"],
+.form-inline input[type="password"] {
+    width: 180px;
+}
+.input-group {
+    margin-bottom: 10px;
+}
+.pagination { margin-top :0;}
+.navbar-inverse {margin: 110px 0}
+
+.word-wrap{
+    word-wrap: break-word;
+    word-break: break-all;
+}

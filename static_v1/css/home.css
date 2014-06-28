@@ -1,0 +1,468 @@
+
+.bookmark h3 a {
+color: black;
+font-size: 16px;
+}
+
+.bookmark p {
+color: #777;
+font-size: 11px;
+}
+
+.bookmark {
+width: 500px;
+border-bottom: 1px solid #DDD;
+margin: 10px 0 0 0;
+padding: 0 0 12px 0;
+}
+
+.bookmark .options {
+float: right;
+font-size: 11px;
+color: #777;
+}
+
+#images {
+position: relative;
+}
+
+#page {
+position: relative;
+}
+
+.hometile {
+background-color: white;
+width: 236px;
+border: 1px solid #dedede;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+display: none;
+}
+
+.hometile #intro {
+border-bottom: 1px solid #dedede;
+padding: 10px 0 7px 10px;
+}
+
+.hometile #intro h1 {
+padding: 6px 10px 6px 12px;
+margin-bottom: 10px;
+font-size: 18px;
+font-weight: normal;
+line-height: 24px;
+  color: #666666;
+}
+
+.hometile #intro h1 b {
+  font-weight: bold;
+  color: #000;
+}
+
+.hometile #intro .options {
+color: #777;
+}
+
+.hometile #intro .options:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.hometile .welcome {
+padding: 14px 0 14px 21px;
+}
+
+.hometile .welcome h1 {
+margin: 0;
+font-size: 18px;
+font-weight: normal;
+line-height: 24px;
+}
+
+.hometile .actionButton {
+display: inline-block;
+line-height: 30px;
+margin: 0 0px 15px 10px;
+padding: 0 10px 1px 10px;
+float: left;
+}
+
+.hometile .blueButton {
+padding-left: 20px;
+padding-right: 20px;
+}
+
+.hometile .joinWithFB {
+clear: both;
+margin: 0;
+}
+
+.hometile .actionButton img {
+display: inline-block;
+vertical-align: middle;
+margin: 0 5px 3px 0;
+}
+
+.hometile .nav,
+.hometile .navigation {
+padding: 0 0 5px 0;
+width: 236px;
+}
+
+.hometile .nav h2,
+.hometile .navigation h2 {
+font-weight: 700;
+font-size: 14px;
+margin-bottom: 8px;
+color: #333;
+padding: 21px 5px 2px 18px;
+border-top-left-radius: 3px;
+border-top-right-radius: 3px;
+}
+
+.hometile .nav li,
+.hometile .navigation li {
+  
+}
+
+.hometile .nav li:last-child,
+.hometile .navigation li:last-child {
+border-bottom: 0px;
+}
+
+.hometile .nav li a,
+.hometile .navigation li a {
+display: block;
+padding: 0 5px 0 20px;
+font-size: 13px;
+  line-height: 26px;
+color: #666666;
+}
+
+.hometile .nav li:hover a,
+.hometile .navigation li a:hover,
+.hometile .categories li:hover a {
+color: #008ed3;
+}
+.hometile .nav li:hover,
+.hometile .navigation li:hover,
+.hometile .categories li:hover {
+background-color: #f8f8f8;
+}
+.hometile .nav li.active a,
+.hometile .navigation li.active a,
+.hometile .categories li.active a {
+color: #ffffff;
+}
+
+.hometile .nav li.active,
+.hometile .navigation li.active,
+.hometile .categories li.active {
+  abackground-color: #008ed3;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#009ad7), to(#0082cf));
+  background-image: -webkit-linear-gradient(top, #009ad7, #0082cf);
+  background-image: -moz-linear-gradient(top, #009ad7, #0082cf);
+  background-image: -ms-linear-gradient(top, #009ad7, #0082cf);
+  background-image: -o-linear-gradient(top, #f8f8009ad7f8, #0082cf);
+  background-image: linear-gradient(top, #009ad7, #0082cf);
+-webkit-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+-moz-box-shadow: 0 1px 0 rgba(0,0,0,.1);
+box-shadow: 0 1px 0 rgba(0,0,0,.1);
+cursor: default;
+}
+
+.hometile p {
+border-top: 1px solid #dedede;
+padding: 18px 18px 18px 22px;
+font-size: 12px;
+  line-height: 20px;
+color: #666;
+}
+
+.hometile p b {
+color: #000;
+}
+
+.hometile .news p span {
+  padding: 0 5px 0 5px;
+}
+
+.hometile .news li {
+padding: 5px 0 5px 0;
+float: left;
+width: 66px;
+text-align: center;
+}
+
+.hometile .news li img {
+margin-right: 5px;
+display: block;
+margin: 0 auto 4px auto;
+}
+
+.hometile .news ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+.hometile .facebookLike {
+border-top: 1px solid #dedede;
+padding: 15px 18px 5px 18px;
+font-size: 11px;
+color: #666;
+background-color: #fafafa;
+margin-top: 10px;
+}
+
+
+.hometile .tweetThis {
+padding: 5px 18px 15px 18px;
+background-color: #fafafa;
+height: 20px;
+}
+
+.hometile .message {
+border-top: 1px solid #dedede;
+padding: 13px 18px 15px 61px;
+font-size: 11px;
+color: #666;
+background: #fafafa url('/assets/plus/seal-mid.png') no-repeat 22px 18px;
+}
+
+.hometile .message p {
+color: #333333;
+font-size: 11px;
+line-height: 16px;
+}
+
+.hometile .message h3 a {
+color: #999999;
+font-size: 11px;
+padding: 0;
+line-height: 16px;
+margin: 8px 0 0 0;
+}
+
+.hometile .message a {
+display: inline-block;
+margin: 3px 0 0 0;
+float: none;
+}
+
+.hometile .message a,
+.hometile .blog a {
+-moz-transition: color 0.15s ease-out;
+-o-transition: color 0.15s ease-out;
+-webkit-transition: color 0.15s ease-out;
+-ms-transition: color 0.15s ease-out;
+transition: color 0.15s ease-out;
+}
+
+.hometile .blog {
+border-top: 1px solid #ededed;
+padding: 13px 18px 13px 61px;
+min-height: 32px;
+position: relative;
+}
+
+.hometile .blog .icon {
+background: transparent url('http://assets.wookmark.com/icons.png') no-repeat -22px -101px;
+width: 30px;
+height: 32px;
+position: absolute;
+left: 19px;
+top: 13px;
+}
+
+.hometile .blog h3 {
+font-weight: normal;
+font-size: 11px;
+line-height: 16px;
+}
+
+.hometile h3 a:hover {
+  color: #008ed3;
+text-decoration: none;
+}
+
+.hometile .categories {
+  padding: 10px 0 15px 0;
+}
+
+.hometile .categories h2 {
+ font-size: 13px; 
+  padding: 0 20px 10px 20px;
+}
+
+.hometile .categories li {
+  font-size: 11px;
+  line-height: 20px;
+text-indent: 2px;
+  padding: 0 20px 0 20px;
+}
+
+.hometile .categories li a {
+  color: #666666;
+  display: block;
+}
+
+.hometile .categories li a span {
+  margin: 0 7px 0 0;
+  color: #cccccc;
+  font-size: 9px;
+  line-height: 0px;
+}
+
+/** User tile **/
+
+.usertile {
+padding: 14px 18px 18px 18px;
+background-color: #fff;
+-moz-transition: box-shadow 0.15s ease-out;
+-o-transition: box-shadow 0.15s ease-out;
+-webkit-transition: box-shadow 0.15s ease-out;
+-ms-transition: box-shadow 0.15s ease-out;
+transition: box-shadow 0.15s ease-out;
+border: 1px solid #dedede;
+-moz-border-radius: 2px;
+-webkit-border-radius: 2px;
+border-radius: 2px;
+width: 200px;
+display: none;
+}
+
+.usertile:hover {
+-moz-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.25);
+box-shadow: 0 1px 2px rgba(0,0,0,.25);
+}
+
+.usertile h4 {
+margin: 0;
+padding: 0 0 10px 0;
+font-size: 16px;
+word-wrap: break-word;
+}
+
+.usertile p {
+font-size: 11px;
+line-height: 14px;
+color: #777;
+padding: 8px 0 0 0;
+}
+
+.tile.source {
+display: none;
+}
+
+/** Home nav **/
+#homeNav {
+position: absolute;
+top: 23px;
+left: 250px;
+display: none;
+}
+
+#homeNav li {
+float: left;
+border-right: 1px solid #d1d1d1;
+margin: 0;
+line-height: 16px;
+}
+
+#homeNav li.last {
+border-right: none;
+}
+
+#homeNav li {
+font-size: 13px;
+text-align: center;
+position: relative;
+color: #red;
+}
+
+#homeNav li span {
+font-size: 11px;
+color: #666666;
+}
+
+#homeNav li a:link {
+display: block;
+padding: 0px 18px 0px 18px;
+-moz-transition: all .15s ease-out;
+-webkit-transition: all .15s ease-out;
+-ms-transition: all .15s ease-out;
+-o-transition: all .15s ease-out;
+transition: all .15s ease-out;
+}
+
+#homeNav li.single a {
+line-height: 37px;
+font-size: 14px;
+padding-bottom: 3px;
+}
+
+#homeNav li.active a span {
+color: #000000;
+}
+
+#homeNav li a:after {
+content: url('/assets/icons/arrow-down.png');
+position: absolute;
+left: 40%;
+top: 11px;
+opacity: 0;
+filter: alpha(opacity=0);
+-moz-transition: all .15s ease-out;
+-webkit-transition: all .15s ease-out;
+-ms-transition: all .15s ease-out;
+-o-transition: all .15s ease-out;
+transition: all .15s ease-out;
+}
+
+#homeNav li a:hover:after {
+opacity: 0.25;
+filter: alpha(opacity=25);
+top: 24px;
+}
+
+#homeNav li.active a:after {
+opacity: 1;
+filter: alpha(opacity=100);
+top: 24px;
+}
+
+#homeNav li a:hover span {
+  color: #008ed3;
+}
+
+.hometile .navigation {
+display: none;
+}
+
+/** Media queries **/
+
+@media screen and (max-width: 770px) {
+  #homeNav {
+    visibility: hidden;
+    display: none;
+    border: 1px solid red;
+  }
+  .hometile .navigation {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+}
+
+

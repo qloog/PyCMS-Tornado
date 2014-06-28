@@ -1,0 +1,95 @@
+<table id="admin_newslist_datagrid" class="easyui-datagrid"
+       data-options='
+            "border":false,
+            "fit":true,
+            "fitColumns":true,
+            "rownumbers":true,
+            "singleSelect":true,
+            "pagination":true,
+            "pageList":[20,30,50,80,100],
+            "pageSize":"20",
+            "title":"新闻管理 > 新闻列表 ",
+            "url":"/admin/news/news_list/datagrid",
+            "method": "get",
+            "toolbar":admin_newslist_datagrid_toolbar' style="">
+    <thead>
+        <tr>
+            <th data-options='"field":"title","width":60,"sortable":true'>新闻标题</th>
+            <th data-options='"field":"category_name","width":15,"sortable":true'>所属分类</th>
+            <th data-options='"field":"create_time","width":25,"formatter":adminNewsListTimeFormatter'>创建时间</th>
+            <th data-options='"field":"username","width":25'>创建者</th>
+            <th data-options='"field":"update_time","width":25,"formatter":adminNewsListTimeFormatter'>更新时间</th>
+            <th data-options='"field":"status","width":10,"formatter":adminNewsListStateFormatter'>状态</th>
+            <th data-options='"field":"news_id","width":15,"formatter":adminNewsListOperateFormatter'>管理操作</th>
+        </tr>
+    </thead>
+</table>
+
+<!-- 添加新闻 -->
+<div id="admin_newslist_add_dialog" class="easyui-dialog" title="添加新闻" data-options="modal:true,closed:true,iconCls:'icons-application-application_add',buttons:[{text:'确定',iconCls:'icons-other-tick',handler:function(){$('#admin_newslist_add_dialog_form').submit();}},{text:'取消',iconCls:'icons-arrow-cross',handler:function(){$('#admin_newslist_add_dialog').dialog('close');}}]" style="width:960px;height:800px;"></div>
+
+<!-- 编辑新闻 -->
+<div id="admin_newslist_edit_dialog" class="easyui-dialog" title="编辑新闻" data-options="modal:true,closed:true,iconCls:'icons-application-application_edit',buttons:[{text:'确定',iconCls:'icons-other-tick',handler:function(){$('#admin_newslist_edit_dialog_form').submit();}},{text:'取消',iconCls:'icons-arrow-cross',handler:function(){$('#admin_newslist_edit_dialog').dialog('close');}}]" style="width:960px;height:800px;"></div>
+
+<script type="text/javascript">
+var admin_newslist_datagrid_toolbar = [
+	{ text: '添加新闻', iconCls: 'icons-arrow-add', handler: adminNewsListAdd },
+	{ text: '刷新', iconCls: 'icons-arrow-arrow_refresh', handler: adminNewsListRefresh }
+];
+//时间格式化
+function adminNewsListTimeFormatter(val){
+	return val != '1970-01-01 08:00:00' ? val : '';
+}
+//状态格式化
+function adminNewsListStateFormatter(val){
+	return val == 2 ? '<font color="red">草稿</font>' : '已发布';
+}
+//操作格式化
+function adminNewsListOperateFormatter(val){
+	var btn = [];
+
+    btn.push('<a href="javascript:void(0);" onclick="adminNewsListEdit('+val+')">编辑</a>');
+    btn.push('<a href="javascript:void(0);" onclick="adminNewsListDelete('+val+')">删除</a>');
+
+	return btn.join(' | ');
+}
+//刷新
+function adminNewsListRefresh(){
+	$('#admin_newslist_datagrid').datagrid('reload');
+}
+//添加
+function adminNewsListAdd(){
+	$('#admin_newslist_add_dialog').dialog({href:'/admin/news/news_add'});
+	$('#admin_newslist_add_dialog').dialog('open');
+}
+//编辑
+function adminNewsListEdit(id){
+	if(typeof(id) !== 'number'){
+		$.messager.alert('提示信息', '未选择新闻', 'error');
+		return false;
+	}
+	var url = '/admin/news/news_edit';
+	url += url.indexOf('?') != -1 ? '&id='+id : '?id='+id;
+	$('#admin_newslist_edit_dialog').dialog({href:url});
+	$('#admin_newslist_edit_dialog').dialog('open');
+}
+//删除
+function adminNewsListDelete(id){
+	if(typeof(id) !== 'number'){
+		$.messager.alert('提示信息', '未选择新闻', 'error');
+		return false;
+	}
+	$.messager.confirm('提示信息', '确定要删除吗？', function(result){
+		if(!result) return false;
+		$.post('/admin/news/news_delete', {id: id}, function(res){
+			if(!res.code){
+				$.messager.alert('提示信息', res.msg, 'error');
+			}else{
+				$.messager.alert('提示信息', res.msg, 'info');
+				adminRoleListRefresh();
+			}
+		}, 'json');
+	});
+}
+
+</script>

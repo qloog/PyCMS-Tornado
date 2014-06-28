@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block container %}
+	<div id="page">
+		<div class="headerSpacer">
+		</div>
+		<div id="main">
+			<div id="settingsNav">
+				<ul>
+					<li class="active">
+						<a href="/settings/profile">
+							Profile
+						</a>
+					</li>
+					<li>
+						<a href="/settings/notifications">
+							Notifications
+						</a>
+					</li>
+					<li>
+						<a href="/settings/password">
+							Password
+						</a>
+					</li>
+				</ul>
+			</div>
+			<div class="content">
+				{% block setting_content %}{% end %}
+			</div>
+		</div>
+	</div>
+{% end %}

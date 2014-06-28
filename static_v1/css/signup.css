@@ -1,0 +1,207 @@
+
+html {
+background-image: url('/static/img/bg-pattern-1.png');
+}
+
+.headerSpacer {
+  height: 35px;
+}
+
+#maincontent {
+margin-left: auto;
+margin-right: auto;
+width: 420px;
+padding: 0 0 0 0;
+background: transparent;
+height: 570px;
+}
+
+#maincontent .panelLeft {
+width: 420px;
+background-color: #ffffff;
+padding: 30px 0 0 0;
+border: 1px solid #dedede;
+line-height: 10px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+#panelSignup {
+padding-top: 5px;
+padding: 30px 0px 0px 40px;
+border-top: 1px solid #ededed;
+}
+
+#maincontent h1 {
+margin-bottom: 25px;
+margin-top: 0;
+padding: 0 10px 0 10px;
+text-align: left;
+font-size: 22px;
+font-weight: normal;
+  text-align: center;
+}
+
+#panelSignup p {
+  margin: 10px 0 0 0;
+  font-size: 11px;
+  line-height: 16px;
+  color: #666666;
+  padding: 0 30px 0 5px;
+}
+
+#panelSignup p a {
+ font-weight: bold; 
+}
+
+#maincontent label {
+font-size: 13px;
+line-height: 13px;
+padding-bottom: 0px;
+color: #333333;
+display: none;
+}
+
+#maincontent input[type=text],
+#maincontent input[type=password] {
+margin: 0px;
+padding: 8px 5px 8px 10px;
+font-size: 20px;
+width: 325px;
+  color: #777777;
+}
+
+#maincontent input[type=text].active,
+#maincontent input[type=password].active {
+  color: #000000;
+}
+
+#maincontent input[type=text] {
+margin-bottom: 5px;
+}
+
+#maincontent input[name=address] {
+  display: none;
+}
+
+#maincontent .passSection {
+  position: relative;
+}
+
+#maincontent .passSection input[type=password] {
+  display: none;
+}
+
+#maincontent .passSection.active input[type=password] {
+  display: block;
+}
+
+#maincontent .passSection.active input[type=text] {
+  display: none;
+}
+
+#maincontent input[type=password] {
+margin-bottom: 5px;
+color: #000000;
+}
+
+#maincontent input[type=submit] {
+font-size: 18px;
+  padding: 10px 0 10px 0;
+  width: 342px;
+}
+
+#maincontent .error {
+border: 1px solid #ddd;
+background-color: #f8f8f8;
+padding: 10px 40px 13px 40px;
+  text-align: center;
+font-size: 14px;
+line-height: 18px;
+color: #333;
+margin-bottom: 20px;
+}
+
+#maincontent .social h2 {
+font-weight: bold;
+font-size: 16px;
+color: black;
+padding-bottom: 15px;
+margin-bottom: 5px;
+}
+
+#maincontent .social {
+border-top: 1px solid #ededed;
+margin-top: 15px;
+padding: 30px 0px 30px 40px;
+}
+
+#maincontent .social .actionButton {
+float: left;
+margin-right: 15px;
+line-height: 18px;
+padding: 7px 10px 6px 10px;
+}
+
+#maincontent .social .actionButton img {
+vertical-align: middle;
+margin-bottom: 2px;
+margin-right: 7px;
+display: inline;
+}
+
+#maincontent .resetPassword {
+border-top: 1px solid #dedede;
+font-size: 11px;
+color: #999999;
+background-color: #f8f8f8;
+margin-top: 5px;
+padding: 15px 30px 15px 40px;
+}
+
+#maincontent .resetPassword a {
+color: #999999;
+}
+
+#maincontent .resetPassword a:hover {
+color: #000000;
+text-decoration: underline;
+}
+
+#maincontent .panelRight {
+float: right;
+width: 360px;
+padding-top: 10px;
+}
+
+#maincontent .panelRight h3 {
+font-size: 24px;
+line-height: 28px;
+padding: 5px 0 20px 0;
+font-weight: normal;
+}
+
+#maincontent .panelRight ol li {
+background: transparent url('/static/img/arrow-right-li.png') no-repeat center left;
+line-height: 22px;
+font-size: 14px;
+padding-left: 17px;
+}
+
+/** Top panel **/
+
+#maincontent .panelTop img {
+ display: block;
+  float: left;
+  margin: 0 15px 30px 40px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+}
+
+#maincontent .panelTop h3 {
+  font-size: 18px;
+  line-height: 24px;
+  padding: 12px 0 0 0;
+}

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ static_url("css/signup.css?v=10") }}" type="text/css" media="all" />
+{% end %}
+
+{% block leftmenu %}{% end %}
+{% block navtop %}{% end %}
+{% block container %}
+						<div class="headerSpacer">
+						</div>
+						<div id="maincontent" class="center signup clearfix" data-error="">
+							<div class="panelLeft">
+								<h1>
+									Welcome, it's great to meet you.
+								</h1>
+								{% if error %}
+								<div class="error"><p>{{ handler.error_message[str(error)]}}</p></div>
+								{% end %}
+								<div id="panelSignup" class="panel">
+									<div class="wrapSignupForm">
+										<form action="/register" method="post" accept-charset="utf-8" id="formLogin">
+											{% raw xsrf_form_html() %}
+											<input type="text" name="username" value="Your name" placeholder="Your name" autocomplete="off" />
+											<input type="text" name="email" value="Email" placeholder="Email" autocomplete="off" />
+											<div class="passSection">
+												<input type="text" name="pastaDummy" value="Password" autocomplete="off" />
+												<input type="password" name="password" value="" autocomplete="off" />
+											</div>
+											<input type="submit" name="send" value="Let me in" class="actionButton blueButton"
+											/>
+										</form>
+									</div>
+								</div>
+								<div class="social clearfix">
+									<h2>
+										More sign-up options
+									</h2>
+									<div class="fbLogin">
+										<a href="/facebook/login" class="actionButton">
+											<img src="{{ static_url("img/icons/facebook-18.png") }}" width="18" height="18" alt="" />
+											Facebook
+										</a>
+									</div>
+									<div class="twitterLogin">
+										<a href="/twitter/login" class="actionButton">
+											<img src="{{ static_url("img/icons/twitter-18.png") }}" width="24" height="18" alt="" />
+											Twitter
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="clear">
+						</div>
+						</div>
+{% end %}
+
+{% block js %}
+<script type="text/javascript" src="{{ static_url("js/signup.js?v=10") }}"></script>
+{% end %}

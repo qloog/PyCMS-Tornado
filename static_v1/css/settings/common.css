@@ -1,0 +1,137 @@
+
+html {
+background: #e9e9e9 url('/static/img/bg-pattern-1.png');
+}
+
+html,
+#page {
+height: 100%;
+}
+
+body {
+height: 100%;
+}
+
+.headerSpacer {
+height: 70px;
+}
+
+#main {
+width: 970px;
+margin: 0 auto 30px auto;
+overflow: hidden;
+border: 1px solid #dedede;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+background-color: #ffffff;
+}
+
+#main .content {
+padding: 20px 0 20px 0;
+}
+
+#settingsNav {
+float: left;
+width: 179px;
+padding: 20px 0 0 0;
+background-color: #fafafa;
+margin-bottom: -10000px;
+padding-bottom: 10000px;
+border-right: 1px solid #dddada;
+-moz-border-radius-topleft: 5px;
+-moz-border-radius-bottomleft: 5px;
+-webkit-border-top-left-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+border-top-left-radius: 5px;
+border-bottom-left-radius: 5px;
+}
+
+#settingsNav ul {
+
+}
+
+#settingsNav li {
+padding: 13px 0 15px 20px;
+font-weight: 300;
+border-top: 1px solid #ffffff;
+border-bottom: 1px solid #e1e1e1;
+text-shadow: 0 1px #ffffff;
+}
+
+#settingsNav li:first-child {
+border-top: 0px;
+}
+
+#settingsNav li:last-child {
+border-bottom: 0px;
+}
+
+#settingsNav li a:link,
+#settingsNav li a:visited {
+font-size: 16px;
+color: #444444;
+-moz-transition: all 0.1s ease-out;
+-o-transition: all 0.1s ease-out;
+-webkit-transition: all 0.1s ease-out;
+-ms-transition: all 0.1s ease-out;
+transition: all 0.1s ease-out; 
+}
+
+#settingsNav li a:hover {
+color: #008ed3;
+}
+
+#settingsNav li:hover {
+
+}
+
+#settingsNav li.active a {
+font-weight: bold;
+}
+
+#main .content {
+width: 710px;
+float: right;
+color: #333;
+font-size: 13px;
+line-height: 18px;
+padding: 25px 40px 30px 40px;
+background-color: #ffffff;
+}
+
+#main:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+
+#main .content h1 {
+font-weight: 300;
+color: #1a1a1a;
+margin: 0 0 0 0;
+text-shadow: 0 1px #ffffff;
+}
+
+#main .content p {
+margin: 10px 0 0 0;
+}
+
+#main .content h2 {
+font-weight: 300;
+color: #1a1a1a;
+margin: 10px 0 10px 0;
+}
+
+#main .content .intro {
+padding: 0 0 25px 0;
+border-bottom: 1px solid #ccc;
+}
+
+#main .content .actionButton {
+display: inline-block;
+margin: 15px 0 0 0;
+}

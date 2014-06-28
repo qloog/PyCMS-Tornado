@@ -1,0 +1,43 @@
+<script type="text/javascript">
+$(function(){
+	$.formValidator.initConfig({formID:"admin_rolelist_edit_dialog_form",onError:function(msg){/*$.messager.alert('错误提示', msg, 'error');*/},onSuccess:adminRolelistEditDialogFormSubmit,submitAfterAjaxPrompt:'有数据正在异步验证，请稍等...',inIframe:true});
+	$("#admin_rolelist_edit_dialog_form_name").formValidator({onShow:"请输入角色名称",onFocus:"角色名称不能为空"}).inputValidator({min:1,max:999,onError:"角色名称不能为空"});
+})
+function adminRolelistEditDialogFormSubmit(){
+	$.post('/admin/user/role_edit?id={{ info.role_id }}', $("#admin_rolelist_edit_dialog_form").serialize(), function(res){
+	    var json = $.parseJSON(res);
+		if(json.code == 0 ){
+			$.messager.alert('提示信息', json.msg, 'info');
+			$('#admin_rolelist_edit_dialog').dialog('close');
+			adminRoleListRefresh();
+		}else{
+            $.messager.alert('提示信息', json.msg, 'error');
+		}
+	})
+}
+</script>
+<form id="admin_rolelist_edit_dialog_form">
+{% raw xsrf_form_html() %}
+<table cellspacing="6" width="100%">
+	<tr>
+		<td width="80">角色名称：</td>
+		<td><input id="admin_rolelist_edit_dialog_form_name" type="text" name="role_name" value="{{ info.role_name }}" style="width:180px;height:22px" /></td>
+		<td><div id="admin_rolelist_edit_dialog_form_nameTip"></div></td>
+	</tr>
+	<tr>
+		<td>角色描述：</td>
+		<td colspan="2"><textarea name="description" style="width:90%;height:60px;font-size:12px">{{ info.description }}</textarea></td>
+	</tr>
+	<tr>
+		<td>是否启用：</td>
+		<td colspan="2">
+            <label><input type="radio" name="status" value="1" {% if info.status == 1 %}checked{% end %} />启用</label>
+            <label><input type="radio" name="status" value="2" {% if info.status == 2 %}checked{% end %} />禁止</label>
+        </td>
+	</tr>
+	<tr>
+		<td>排序：</td>
+		<td colspan="2"><input type="text" name="list_order" value="{{ info.list_order }}" style="width:40px;height:22px" /></td>
+	</tr>
+</table>
+</form>

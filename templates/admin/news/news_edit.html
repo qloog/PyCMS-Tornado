@@ -1,0 +1,48 @@
+<script type="text/javascript">
+$(function(){
+	$.formValidator.initConfig({formID:"admin_newslist_edit_dialog_form",onError:function(msg){/*$.messager.alert('错误提示', msg, 'error');*/},onSuccess:adminnewslistEditDialogFormSubmit,submitAfterAjaxPrompt:'有数据正在异步验证，请稍等...',inIframe:true});
+	$("#admin_newslist_edit_dialog_form_name").formValidator({onShow:"请输入名称",onFocus:"新闻名称不能为空"}).inputValidator({min:1,max:999,onError:"新闻名称不能为空"});
+})
+function adminnewslistEditDialogFormSubmit(){
+	$.post('/admin/news/news_edit?id={{ info.news_id }}', $("#admin_newslist_edit_dialog_form").serialize(), function(res){
+		if(res.code == 0 ){
+			$.messager.alert('提示信息', res.msg, 'info');
+			$('#admin_newslist_edit_dialog').dialog('close');
+			adminNewsListRefresh();
+		}else{
+            $.messager.alert('提示信息', res.msg, 'error');
+		}
+	}, 'json');
+}
+</script>
+<form id="admin_newslist_edit_dialog_form">
+{% raw xsrf_form_html() %}
+<table cellspacing="6" width="100%">
+	<tr>
+		<td width="80">新闻标题：</td>
+		<td><input id="admin_newslist_edit_dialog_form_name" type="text" name="title" value="{{ info.title }}" style="width:280px;height:22px" /></td>
+		<td><div id="admin_newslist_edit_dialog_form_nameTip"></div></td>
+	</tr>
+    <tr>
+		<td>分类：</td>
+		<td colspan="2">
+            <select name="category_id">
+                {% for category in categorys %}
+                    <option value="{{ category.category_id}}">{{ category.category_name }}</option>
+                {% end %}
+            </select>
+		</td>
+	</tr>
+	<tr>
+		<td>新闻内容：</td>
+		<td colspan="2"><textarea name="content" style="width:90%;height:500px;font-size:12px">{{ info.content }}</textarea></td>
+	</tr>
+	<tr>
+		<td>发布状态：</td>
+		<td colspan="2">
+            <label><input type="radio" name="status" value="1" {% if info.status == 1 %}checked{% end %} />发布</label>
+            <label><input type="radio" name="status" value="2" {% if info.status == 2 %}checked{% end %} />草稿</label>
+        </td>
+	</tr>
+</table>
+</form>

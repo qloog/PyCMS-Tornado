@@ -1,0 +1,42 @@
+
+html {
+background: #e9e9e9 url('/static/img/bg-pattern-1.png');
+}
+
+#maincontent {
+text-align: center;
+margin: 0 auto;
+position: relative;
+width: 600px;
+background: #ffffff;
+padding: 20px 30px 30px 30px;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  border: 1px solid #dedede;
+}
+
+#maincontent img {
+display: block;
+margin: 35px auto 0 auto;
+}
+
+#maincontent h1 {
+font-size: 30px;
+line-height: 30px;
+font-weight: normal;
+color: #000000;
+margin: 0 0 20px 0;
+backfground: rgba(0,0,0,.2);
+}
+
+#maincontent .row {
+display: block;
+margin: 0;
+}
+
+#maincontent .row img {
+display: block;
+margin: 0;
+float: left;
+}
