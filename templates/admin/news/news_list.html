@@ -11,19 +11,34 @@
             "title":"新闻管理 > 新闻列表 ",
             "url":"/admin/news/news_list/datagrid",
             "method": "get",
-            "toolbar":admin_newslist_datagrid_toolbar' style="">
+            "toolbar":"#admin_newslist_datagrid_toolbar"' style="">
     <thead>
         <tr>
+            <th data-options='"field":"news_id","width":5,"sortable":true'>ID</th>
             <th data-options='"field":"title","width":60,"sortable":true'>新闻标题</th>
             <th data-options='"field":"category_name","width":15,"sortable":true'>所属分类</th>
             <th data-options='"field":"create_time","width":25,"formatter":adminNewsListTimeFormatter'>创建时间</th>
             <th data-options='"field":"username","width":25'>创建者</th>
             <th data-options='"field":"update_time","width":25,"formatter":adminNewsListTimeFormatter'>更新时间</th>
             <th data-options='"field":"status","width":10,"formatter":adminNewsListStateFormatter'>状态</th>
-            <th data-options='"field":"news_id","width":15,"formatter":adminNewsListOperateFormatter'>管理操作</th>
+            <th data-options='"field":"operate_id","width":15,"formatter":adminNewsListOperateFormatter'>管理操作</th>
         </tr>
     </thead>
 </table>
+
+<div id="admin_newslist_datagrid_toolbar" style="padding:5px;height:auto">
+	<form>
+        <a href="javascript:;" onclick="adminNewsListAdd();" class="easyui-linkbutton" iconCls="icons-arrow-add">添加新闻</a>
+		<a href="javascript:;" onclick="adminNewsListRefresh();" class="easyui-linkbutton" iconCls="icons-arrow-arrow_refresh">刷新</a>
+
+		标题:
+		<input name="title" style="width:150px">
+		时 间: <input name="begin" class="easyui-datebox" style="width:100px">
+		至: <input name="end" class="easyui-datebox" style="width:100px">
+
+		<a href="javascript:;" onclick="newsSearch(this);" class="easyui-linkbutton" iconCls="icons-map-magnifier">搜索</a>
+	</form>
+</div>
 
 <!-- 添加新闻 -->
 <div id="admin_newslist_add_dialog" class="easyui-dialog" title="添加新闻" data-options="modal:true,closed:true,iconCls:'icons-application-application_add',buttons:[{text:'确定',iconCls:'icons-other-tick',handler:function(){$('#admin_newslist_add_dialog_form').submit();}},{text:'取消',iconCls:'icons-arrow-cross',handler:function(){$('#admin_newslist_add_dialog').dialog('close');}}]" style="width:960px;height:800px;"></div>
@@ -32,10 +47,15 @@
 <div id="admin_newslist_edit_dialog" class="easyui-dialog" title="编辑新闻" data-options="modal:true,closed:true,iconCls:'icons-application-application_edit',buttons:[{text:'确定',iconCls:'icons-other-tick',handler:function(){$('#admin_newslist_edit_dialog_form').submit();}},{text:'取消',iconCls:'icons-arrow-cross',handler:function(){$('#admin_newslist_edit_dialog').dialog('close');}}]" style="width:960px;height:800px;"></div>
 
 <script type="text/javascript">
-var admin_newslist_datagrid_toolbar = [
-	{ text: '添加新闻', iconCls: 'icons-arrow-add', handler: adminNewsListAdd },
-	{ text: '刷新', iconCls: 'icons-arrow-arrow_refresh', handler: adminNewsListRefresh }
-];
+var admin_newslist_datagrid_id = 'admin_newslist_datagrid';
+//搜索
+function newsSearch(that){
+	var queryParams = $('#'+admin_newslist_datagrid_id).datagrid('options').queryParams;
+	$.each($(that).parent('form').serializeArray(), function() {
+		queryParams[this['name']] = this['value'];
+	});
+	$('#'+admin_newslist_datagrid_id).datagrid('reload');
+}
 //时间格式化
 function adminNewsListTimeFormatter(val){
 	return val != '1970-01-01 08:00:00' ? val : '';

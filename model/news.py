@@ -111,13 +111,16 @@ class News(Base):
         return item and cls.initialize(item)
 
     @classmethod
-    def gets(cls, start=0, limit=20):
-        rs = db_session.query(News.news_id, News.category_id, News.title, News.create_time,
-                              News.create_uid, News.update_time, News.status,
-                              NewsCategory.category_name, Admin.username)\
-            .join(NewsCategory, Admin)\
-            .filter(News.category_id == NewsCategory.category_id, News.create_uid == Admin.user_id)\
-            .offset(start).limit(limit)
+    def gets(cls, offset=0, limit=20, title='', begin=0, end=0):
+        end = end if end else '2039-12-12'
+        rs = db_session.query(News.news_id, News.news_id.label('operate_id'), News.category_id, News.title,
+                              News.create_time, News.create_uid, News.update_time, News.status,
+                              NewsCategory.category_name, Admin.username).\
+            join(NewsCategory, Admin).\
+            filter(News.category_id == NewsCategory.category_id, News.create_uid == Admin.user_id).\
+            filter(News.title.like('%'+title+'%')).\
+            filter(News.create_time >= begin, News.create_time <= end).\
+            offset(offset).limit(limit)
         return rs.all()
 
     @classmethod

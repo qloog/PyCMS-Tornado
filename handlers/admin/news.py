@@ -21,9 +21,21 @@ class NewsListDatagridHandler(BaseHandler):
         page = self.get_argument('page', 1)
         rows = self.get_argument('rows', 20)
 
-        start = (int(page) - 1) * int(rows)
+        title = self.get_argument('title', '')
+        begin = self.get_argument('begin', '')
+        end = self.get_argument('end', '')
+
+        query = {}
+        if title:
+            query['title'] = title
+        if begin:
+            query['begin'] = begin
+        if end:
+            query['end'] = end
+
+        offset = (int(page) - 1) * int(rows)
         limit = rows
-        rows = News.gets(start, limit)
+        rows = News.gets(offset, limit, **query)
         rows = [obj2dict(r) for r in rows]
         total = News.get_count()
 
