@@ -6,22 +6,20 @@ from libs import Base, db_session
 from utils import encrypt
 from sqlalchemy import Column, Integer, String, DateTime, Boolean
 from sqlalchemy import ForeignKey
-from sqlalchemy.orm import relationship, backref
 
 
 class User(Base):
     __tablename__ = 'wmh_user'
     user_id = Column(Integer, primary_key=True)
     realname = Column(String(16))
-    username = Column(String(16))
-    email = Column(String(32))
+    username = Column(String(16), unique=True)
+    email = Column(String(32), unique=True, index=True)
     password = Column(String(32))
     reg_ip = Column(String(16))
     last_login_time = Column(DateTime)
     last_login_ip = Column(String(16))
     login_times = Column(Integer)
     update_time = Column(DateTime)
-    #user_info = relationship('UserInfo', backref='wmh_user')
 
     def __init__(self, user_id, username, email, realname):
         self.user_id = user_id
@@ -62,7 +60,8 @@ class User(Base):
         }
         db_session.query(User).filter(User.user_id == self.user_id).update(update)
         try:
-            return db_session.commit()
+            db_session.commit()
+            return True
         except:
             db_session.rollback()
 
@@ -79,7 +78,8 @@ class User(Base):
         }
         db_session.query(User).filter(User.user_id == self.user_id).update(update)
         try:
-            return db_session.commit()
+            db_session.commit()
+            return True
         except:
             db_session.rollback()
 
@@ -163,8 +163,7 @@ class UserInfo(Base):
     __tablename__ = 'wmh_user_extinfo'
 
     id = Column(Integer, primary_key=True)
-    #user_id = Column(Integer, ForeignKey('wmh_user.user_id'))
-    user_id = Column(Integer)
+    user_id = Column(Integer, ForeignKey('wmh_user.user_id'))
     gender = Column(Integer)
     birthday = Column(DateTime)
     about_me = Column(String(500))
@@ -195,5 +194,5 @@ class UserInfo(Base):
 
     @classmethod
     def get_info_by_uid(cls, user_id):
-        item = db_session.query(UserInfo).filter(UserInfo.user_id==user_id).first()
+        item = db_session.query(UserInfo).filter(UserInfo.user_id == user_id).first()
         return item and cls.initialize(item)
