@@ -3,4 +3,4 @@
 
 框架采用facebook开源的tornado
 
-欢迎star, fork, pull request
+欢迎star, fork, pull request 😉
